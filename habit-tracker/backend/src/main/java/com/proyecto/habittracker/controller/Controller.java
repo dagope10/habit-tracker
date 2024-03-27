@@ -1,6 +1,7 @@
 package com.proyecto.habittracker.controller;
 
 import com.proyecto.habittracker.dto.LoginRequest;
+import com.proyecto.habittracker.dto.LoginResponse;
 import com.proyecto.habittracker.entities.Habito;
 import com.proyecto.habittracker.entities.Usuario;
 import com.proyecto.habittracker.services.CategoriaService;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class Controller {
@@ -25,21 +27,29 @@ public class Controller {
 
     @GetMapping("/habitos/{id}")
     public List<Habito> devolverHabitosPorUsuario(@PathVariable("id") int idUsuario){
-
         return habitoService.devolverHabitosPorUsuario(idUsuario);
     }
 
-    @PostMapping("/")
+    @PostMapping("/login")
     public ResponseEntity<?> autenticarUsuario(@RequestBody LoginRequest loginRequest){
-        Usuario usuario = usuarioService.encontrarPorEmail(loginRequest.getUsuario());
+        Usuario usuario = usuarioService.encontrarPorEmail(loginRequest.getEmail());
+        System.out.println(loginRequest.getEmail());
+        System.out.println(loginRequest.getPassword());
 
-        if(usuario != null && usuario.getPassword() == loginRequest.getPassword()){
+        System.out.println(usuario.getPassword() + usuario.getEmail());
 
-            return ResponseEntity.ok().body("Todo ok José Luis");
+        if(usuario != null && usuario.getPassword().equals(loginRequest.getPassword())){
+            LoginResponse response = new LoginResponse();
+            response.setEmail(usuario.getEmail());
+            return ResponseEntity.ok(response);
         }
         else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No todo ok José Luis");
         }
-
     }
 }
+
+
+
+
+

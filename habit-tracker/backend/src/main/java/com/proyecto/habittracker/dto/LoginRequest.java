@@ -2,14 +2,22 @@ package com.proyecto.habittracker.dto;
 
 public class LoginRequest {
 
-    private String usuario;
+    private String email;
     private String password;
 
 
-    public String getUsuario(){
-        return this.usuario;
+    public String getEmail(){
+        return this.email;
     }
     public String getPassword(){
         return this.password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

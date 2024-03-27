@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './pagprincipal.component.css'
 })
 export class PagprincipalComponent {
+  username: string | null;
+
+  constructor(){
+    this.username = localStorage.getItem('user_email');
+  }
 
 }

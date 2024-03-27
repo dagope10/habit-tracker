@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  login(username: string, password: string) {
-    return this.http.post<{token: string}>('/http://localhost:8080', {username, password})
+  login(email: string, password: string) {
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify({ email, password });
+    return this.http.post<{name: string, email: string}>('http://localhost:8080/login', body, {headers, withCredentials: true})
       .pipe(tap(res => {
-        localStorage.setItem('auth_token', res.token);
+        localStorage.setItem('user_email', res.email);        
         this.router.navigate(['/home']);
       }));
   }
