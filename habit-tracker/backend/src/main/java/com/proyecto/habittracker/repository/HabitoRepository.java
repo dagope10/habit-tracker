@@ -10,5 +10,7 @@ import java.util.List;
 public interface HabitoRepository extends JpaRepository<Habito, Integer> {
 
     public List<Habito> findByUsuarioId(int idUsuario);
+    public List<Habito> findByCategoriaId(int idCategoria);
+
 
 }
