@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { of } from 'rxjs'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
