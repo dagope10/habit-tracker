@@ -10,6 +10,9 @@ import { PagprincipalComponent } from './pagprincipal/pagprincipal.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    PagprincipalComponent
   ]
 })
 export class HomeModule { }

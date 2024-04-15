@@ -1,0 +1,27 @@
+.habitos-table {
+    width: 100%; /* Aprovecha todo el ancho disponible */
+    border-collapse: collapse; /* Colapsa los bordes de la tabla */
+    margin-top: 20px; /* Espacio arriba de la tabla */
+}
+
+.habitos-table th,
+.habitos-table td {
+    border: 1px solid #ccc; /* Borde sutil para las celdas */
+    padding: 8px; /* Espaciado interno en las celdas */
+    text-align: left; /* Alineación de texto a la izquierda */
+    font-size: 16px; /* Tamaño de fuente adecuado */
+}
+
+.habitos-table th {
+    background-color: #f4f4f4; /* Fondo gris para los encabezados */
+    font-weight: bold; /* Texto en negrita para encabezados */
+}
+
+.habitos-table tbody tr:nth-child(odd) {
+    background-color: #fafafa; /* Fondo alternado para las filas */
+}
+
+.habitos-table img {
+    display: block; /* Asegura que la imagen no tenga espacio extra alrededor */
+    margin: auto; /* Centra la imagen en la celda */
+}

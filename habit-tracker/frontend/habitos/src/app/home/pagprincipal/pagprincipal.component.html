@@ -1,5 +1,23 @@
-<p>Hola, {{username }}!</p>
+<p class="greeting" id="username">Hola, {{username }}!</p>
 
-<ul>
-    <li *ngFor="let habit of habits">{{habit.nombre}}</li>
-</ul>
+<table class="habitos-table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Días Totales</th>
+            <th>Días Consecutivos</th>
+            <th>Medalla</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let habito of habitos">
+            <td>{{ habito.nombre }}</td>
+            <td>{{ habito.descripcion }}</td>
+            <td>{{ habito.diasTotales }}</td>
+            <td>{{ habito.diasConsecutivos }}</td>
+            <td></td>
+            
+        </tr>
+    </tbody>
+</table>

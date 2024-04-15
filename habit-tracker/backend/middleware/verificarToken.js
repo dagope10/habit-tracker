@@ -1,12 +1,11 @@
 const jwt = require('jsonwebtoken');
 
 function verificarToken(req, res, next) {
-    const bearerHeader = req.headers['authorization'];
-    if(!bearerHeader) {
-        return res.status(403).send({mensaje: "Se requiere token"});
+    const token = req.cookies.token;
+
+    if(!token){
+        return res.status(403).send({mensaje: "No hay token"});
     }
-    const bearer = bearerHeader.split(" ");
-    const token = bearer[1];
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if(err) {

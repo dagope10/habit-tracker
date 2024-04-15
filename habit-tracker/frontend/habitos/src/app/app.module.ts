@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { AuthModule } from './auth/auth.module';
-import { AppRoutingModule } from './app-routing.module';
+  import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { JwtInterceptor } from './auth/register/js.interceptor';
+import { HabitosService } from './service/habitos.service';
+import { CommonModule } from '@angular/common';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,13 @@ import { JwtInterceptor } from './auth/register/js.interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    CommonModule,
+    HomeModule
+
   ],
   providers: [
-    provideClientHydration(),
-    {provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true
-    }
+    provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })
