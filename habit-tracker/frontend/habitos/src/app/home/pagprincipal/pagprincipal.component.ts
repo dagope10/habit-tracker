@@ -1,9 +1,5 @@
-import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component,  OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { jwtDecode }from 'jwt-decode';
-import {CommonModule} from '@angular/common';
-import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-pagprincipal',
   templateUrl: './pagprincipal.component.html',
@@ -14,7 +10,7 @@ export class PagprincipalComponent implements OnInit {
   habitos: any;
   id: string | null = '';
 
-  constructor(private http: HttpClient, private cookieService: CookieService){
+  constructor(private http: HttpClient){
     //El siguiente código es para el html de la página principal:
 // src="{{ habito.medalla }}" alt="Medalla" style="width: 30px; height: 30px;
    
@@ -27,7 +23,7 @@ export class PagprincipalComponent implements OnInit {
     if (this.id) {
       console.log('El id es: '+ this.id);
 
-        this.http.get(`http://localhost:3000/habitos/${this.id}`).subscribe((habitos: any) => {
+        this.http.get(`http://localhost:3000/habitos/${this.id}`,{ withCredentials: true}).subscribe((habitos: any) => {
           console.log(habitos);
           this.habitos = habitos;
         });

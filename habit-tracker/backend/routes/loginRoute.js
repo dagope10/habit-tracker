@@ -26,7 +26,7 @@ router.post('/', async(req, res) => {
 
     const esPasswordCorrecto = bcrypt.compareSync(password, usuario.password);
     if(!esPasswordCorrecto) {
-        return res.status(401).json({error:"Contraseña incorrecta"});
+        return res.status(401).json({error:"Login incorrecto"});
     }
 
     const accessToken = generarTokenAcceso({id: usuario.id, nombre: usuario.nombre});

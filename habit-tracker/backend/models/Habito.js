@@ -7,6 +7,13 @@ class Habito {
         const [rows] = await connection.query('SELECT * FROM habitos WHERE id_usuario = ?', [idUsuario]);
         return rows;
     }
+
+    static async obtenerCategorias(){
+        const connection = await db;
+        const [rows] = await connection.query('SELECT * FROM categorias');
+        console.log(rows)
+        return rows;
+    }
 }
 
 

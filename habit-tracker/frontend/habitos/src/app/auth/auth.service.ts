@@ -10,7 +10,6 @@ import { throwError } from 'rxjs';
 
 
 
-// La función no funciona correctamente, no se puede hacer login. Hay que revisarla.
 
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
@@ -23,7 +22,7 @@ export class AuthService {
         tap(res => { 
          if(res.message === 'Inicio de sesión exitoso'){
           
-          this.router.navigate(['/home']);
+          this.router.navigate(['home']);
          }
          
         }),
@@ -33,7 +32,52 @@ export class AuthService {
         })
       );
   }
+
+
+  registrarUsuario(nombre: string, email: string, password: string){
+    const headers= {'Content-Type': 'application/json'};
+    const body = JSON.stringify({nombre, email, password});
+    console.log(body)
+    return this.http.post<RegisterResponse>('http://localhost:3000/registrar-usuario', body, {headers})
+            .pipe(
+              tap(res => {
+                if(res.message === 'Registro exitoso'){
+                  this.router.navigate(['login'])
+                }
+              }),
+              catchError(error => {
+                console.error('Error de registro', error);
+                return throwError(() => new Error('Error al registrar usuario'));
+
+              })
+            )
+
+
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export interface RegisterResponse {
+  message: string;
+}
+
+
+
 export interface LoginResponse {
   message: string;
   nombre?: string;
