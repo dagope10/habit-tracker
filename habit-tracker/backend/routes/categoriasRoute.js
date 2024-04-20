@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Habito = require('../models/Habito');
 
 
 router.get('/', async (req, res)=>{
@@ -7,8 +8,8 @@ router.get('/', async (req, res)=>{
         const categorias = await Habito.obtenerCategorias();
         res.json(categorias);
         console.log(categorias);
-    } catch {
-        res.status(500).json({error: 'Error al obtener categorías de los hábitos'})
+    } catch(error) {
+        res.status(500).json(console.log(error));
     }
 })
 

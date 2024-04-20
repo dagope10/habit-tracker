@@ -1,1 +1,29 @@
-<p>crear-habito works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="nombre">Nombre del hábito</label>
+        <input type="text" formControlName="nombre" required>
+        <div *ngIf="form.get('nombre')?.errors?.['required'] && form.get('nombre')?.touched">
+            El nombre es obligatorio
+        </div>
+    </div>
+
+    <div>
+        <label for="descripcion">Descripción del hábito</label>
+        <input type="text" formControlName="descripcion">
+    </div>
+
+    <div>
+        <label for="categoria">Categoría</label>
+        <select id="categoria" formControlName="categoria" required>
+        <option value=""> Selecciona una categoría</option>
+        <option *ngFor="let categoria of categorias" [value] ='categoria.id_categoria'> {{categoria.nombre}}</option>
+    </select>
+    </div>
+
+    <button type="submit">Crear nuevo hábito</button>
+
+
+
+
+</form>

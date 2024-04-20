@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HabitosService } from '../../../../service/habitos.service';
-import { Categoria } from '../../../models/Categoria';
+
 
 @Component({
   selector: 'app-crear-habito',
@@ -21,10 +21,28 @@ export class CrearHabitoComponent {
   }
 
   ngOnInit(){
-    this.habitoService.obtenerCategorias().subscribe(categorias => {
-      this.categorias = categorias;
-    })
+    this.habitoService.obtenerCategorias().subscribe(categoriasBBDD => {
+      this.categorias = categoriasBBDD;
+        })
   }
+
+  onSubmit(){
+    console.log(this.form.value)
+    if(this.form.valid) {
+      const idUsuario = localStorage.getItem('id');
+      this.form.value.usuarioId = idUsuario;
+      console.log(this.form.value)
+      this.habitoService.crearHabito(this.form.value).subscribe({
+        next: (res: any) => {
+          console.log("Hábito creado con éxito", res);
+
+        },
+        error: () => console.log("No se ha podido crear el hábito")
+      })
+    }
+  }
+
+  
 
 }
 

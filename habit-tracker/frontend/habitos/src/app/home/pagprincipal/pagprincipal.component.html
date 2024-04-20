@@ -1,5 +1,10 @@
 <p class="greeting" id="username">Hola, {{username }}!</p>
 
+<select [(ngModel)] ='categoriaSeleccionada' (change)="filtrarHabitos()">
+<option value="todos">Todos</option>
+<option *ngFor=" let categoria of categorias" [value]="categoria.id_categoria"> {{categoria.nombre}}</option>
+</select>
+
 <table class="habitos-table">
     <thead>
         <tr>
@@ -8,10 +13,11 @@
             <th>Días Totales</th>
             <th>Días Consecutivos</th>
             <th>Medalla</th>
+        
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let habito of habitos">
+        <tr *ngFor="let habito of habitosFiltrados">
             <td>{{ habito.nombre }}</td>
             <td>{{ habito.descripcion }}</td>
             <td>{{ habito.diasTotales }}</td>
@@ -22,4 +28,4 @@
     </tbody>
 </table>
 
-<a routerLink="/nuevoHabito">Crear hábito</a>
+<a routerLink="/home/nuevoHabito">Crear hábito</a>

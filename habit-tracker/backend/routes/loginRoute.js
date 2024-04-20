@@ -13,7 +13,7 @@ function generarTokenAcceso(usuario){
 
 function generarTokenRefresh(usuario) {
     return jwt.sign(usuario, process.env.REFRESH_TOKEN_SECRET, {expiresIn:'7d'});
-}
+}   
 
 
 router.post('/', async(req, res) => {

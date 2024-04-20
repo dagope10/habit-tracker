@@ -4,8 +4,8 @@ import { PagprincipalComponent } from './pagprincipal/pagprincipal.component';
 import { RouterModule } from '@angular/router';
 import { HomeRoutingModule } from './home-routing.module';
 import { CrearHabitoComponent } from './nuevoHabito/crear-habito/crear-habito.component';
-import { HabitosService } from '../../service/habitos.service';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     PagprincipalComponent,
@@ -14,7 +14,9 @@ import { HabitosService } from '../../service/habitos.service';
   imports: [
     CommonModule,
     RouterModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     PagprincipalComponent,

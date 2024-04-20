@@ -15,19 +15,19 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
-    const headers = {'content-type': 'application/json'};
+    const headers = {'Content-Type': 'application/json'};
     const body = JSON.stringify({ email, password });
-    return this.http.post<LoginResponse>('http://localhost:3000/', body, {headers, withCredentials: true})
+    return this.http.post<LoginResponse>('http://localhost:3000/login', body, {headers, withCredentials: true})
       .pipe(
         tap(res => { 
          if(res.message === 'Inicio de sesión exitoso'){
           
-          this.router.navigate(['home']);
+          this.router.navigate(['/home']);
          }
          
         }),
         catchError(error => {
-          console.error(error);
+          console.log(error);
           return throwError(() => new Error('Error al hacer login'));
         })
       );
@@ -42,11 +42,13 @@ export class AuthService {
             .pipe(
               tap(res => {
                 if(res.message === 'Registro exitoso'){
-                  this.router.navigate(['login'])
+                  localStorage.setItem('id', res.id || '');
+                  localStorage.setItem('nombre', res.nombre || '')
+                  this.router.navigate(['/home'])
                 }
               }),
               catchError(error => {
-                console.error('Error de registro', error);
+                console.log('Error de registro', error);
                 return throwError(() => new Error('Error al registrar usuario'));
 
               })
@@ -74,6 +76,8 @@ export class AuthService {
 
 export interface RegisterResponse {
   message: string;
+  id?: string;
+  nombre?: string;
 }
 
 
