@@ -27,11 +27,9 @@ export class CrearHabitoComponent {
   }
 
   onSubmit(){
-    console.log(this.form.value)
     if(this.form.valid) {
       const idUsuario = localStorage.getItem('id');
       this.form.value.usuarioId = idUsuario;
-      console.log(this.form.value)
       this.habitoService.crearHabito(this.form.value).subscribe({
         next: (res: any) => {
           console.log("Hábito creado con éxito", res);

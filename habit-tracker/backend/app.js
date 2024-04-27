@@ -28,4 +28,17 @@ app.use('/registrar-usuario', registerRoute);
 app.use('/login', loginRoute);
 app.use('/categorias', categoriasRoute)
 app.use('/insertarHabitos', habitosRoute)
+
+app.post('/logout', (req, res) => {
+  try {
+      // Clear the 'token' cookie
+      res.clearCookie('token', { path: '/' });
+      res.json({message: 'Cookie eliminada'});
+  } catch (error) {
+      console.error('Error al intentar cerrar sesión:', error);
+      // Send a server error response
+      res.status(500).send('Error al cerrar sesión');
+  }
+});
+
 app.listen(3000, () => {console.log ('Servidor corriendo en el puerto 3000')});

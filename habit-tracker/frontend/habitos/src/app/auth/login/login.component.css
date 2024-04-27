@@ -1,0 +1,94 @@
+
+
+.logo{
+    position: absolute;
+    top: 10px;
+     left: 10px; 
+    width: 60px; 
+    height: auto; 
+    z-index: 10;
+    background-color: #f4f1e7;
+    display: block;
+  }
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f1e7
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    width: 80%
+  
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd; 
+    border-radius: 130px; 
+  }
+  
+  button {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #45a049; 
+  }
+  
+  a {
+    margin-top: 20px;
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .login-container button{
+    width: 80%;
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+  }
+  .login-container form button[type="submit"] {
+    background-color: #4CAF50;
+  }
+  
+  .login-container form button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  
+  .login-container form button[class="register-btn"] {
+     background-color: #007BFF;
+  }
+  
+  .login-container form button[class="register-btn"]:hover {
+  background-color: #0066cc;
+  }

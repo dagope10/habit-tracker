@@ -1,0 +1,85 @@
+
+
+.greeting, h2 {
+    font-size: 20px; 
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 8px;
+    width: 90%; 
+    max-width: 500px;
+    margin: 20px auto; 
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-control, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+.error {
+    color: #ff0000; 
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50; 
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    flex-grow: 1; 
+    margin: 0 5px; 
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Diferenciación de color para botón secundario */
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    background-color: #45a049; /* Oscurecimiento al pasar el mouse */
+}
+
+.logout-container, .logo {
+    position: absolute;
+    top: 10px;
+    width: 60px;
+    height: auto;
+    z-index: 10;
+}
+
+.logout-container {
+    right: 10px; /* Posición de cerrar sesión en la esquina superior derecha */
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: auto;
+    z-index: 10;
+}

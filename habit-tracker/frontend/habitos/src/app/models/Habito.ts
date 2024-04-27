@@ -1,11 +1,13 @@
 export interface Habito {
-    usuarioId: string;
+    id_habito: string;
+    id_usuario: string;
     id_categoria: string;
     nombre: string;
     descripcion: string;
     diasConsecutivos: number;
     diasTotales: number;
-    tiempo: number;
+    ultimaVezRealizado: Date;
     medalla: string;
-    realizadoHoy: boolean;
+    puedeSerRealizadoHoy: boolean;
+   
 }

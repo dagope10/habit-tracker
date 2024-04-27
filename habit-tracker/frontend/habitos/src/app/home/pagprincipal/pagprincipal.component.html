@@ -1,31 +1,46 @@
-<p class="greeting" id="username">Hola, {{username }}!</p>
+<div class="login-container">
+    <!-- Botón de Cerrar Sesión en la parte superior derecha -->
+    <div class="logout-container">
+        <button routerLink="/auth/login" (click)="cerrarSesion()">Cerrar Sesión</button>
+    </div>
 
-<select [(ngModel)] ='categoriaSeleccionada' (change)="filtrarHabitos()">
-<option value="todos">Todos</option>
-<option *ngFor=" let categoria of categorias" [value]="categoria.id_categoria"> {{categoria.nombre}}</option>
-</select>
+    <img src="assets/logo_dp.jpg" alt="Logo DP" class="logo">
+    <h2>Panel de Control</h2>
+    
+    <p class="greeting" id="username">Hola, {{ username }}!</p>
 
-<table class="habitos-table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Días Totales</th>
-            <th>Días Consecutivos</th>
-            <th>Medalla</th>
-        
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let habito of habitosFiltrados">
-            <td>{{ habito.nombre }}</td>
-            <td>{{ habito.descripcion }}</td>
-            <td>{{ habito.diasTotales }}</td>
-            <td>{{ habito.diasConsecutivos }}</td>
-            <td></td>
-            
-        </tr>
-    </tbody>
-</table>
+    <select [(ngModel)]='categoriaSeleccionada' (change)="filtrarHabitos()">
+        <option value="todos">Todos</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id_categoria">{{ categoria.nombre }}</option>
+    </select>
 
-<a routerLink="/home/nuevoHabito">Crear hábito</a>
+    <table class="habitos-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Días Totales</th>
+                <th>Días Consecutivos</th>
+                <th>Medalla</th>
+                <th>Realizado</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let habito of habitosFiltrados">
+                <td>{{ habito.nombre }}</td>
+                <td>{{ habito.descripcion }}</td>
+                <td>{{ habito.diasTotales }}</td>
+                <td>{{ habito.diasConsecutivos }}</td>
+                <td></td>
+                <td>
+                    <button (click)="marcarComoRealizado(habito)" [disabled]="!habito.puedeSerRealizadoHoy">Marcar como Realizado</button>
+                </td>
+                <td> <button (click)="borrarHabito(habito)">Eliminar hábito</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Botón de Crear Hábito -->
+    <button routerLink="/home/nuevoHabito" class="btn-primary">Crear hábito</button>
+</div>

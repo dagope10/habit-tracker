@@ -3,6 +3,7 @@ import { HttpClient, HttpEvent, HttpInterceptor, HttpHandler } from '@angular/co
 import { tap,catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,10 @@ export class AuthService {
     return this.http.post<LoginResponse>('http://localhost:3000/login', body, {headers, withCredentials: true})
       .pipe(
         tap(res => { 
-         if(res.message === 'Inicio de sesión exitoso'){
+     
           
           this.router.navigate(['/home']);
-         }
+         
          
         }),
         catchError(error => {
@@ -41,11 +42,10 @@ export class AuthService {
     return this.http.post<RegisterResponse>('http://localhost:3000/registrar-usuario', body, {headers})
             .pipe(
               tap(res => {
-                if(res.message === 'Registro exitoso'){
+                console.log('Respuesta del servidor', res)
                   localStorage.setItem('id', res.id || '');
-                  localStorage.setItem('nombre', res.nombre || '')
-                  this.router.navigate(['/home'])
-                }
+                  localStorage.setItem('username', res.nombre || '')
+                  this.router.navigate(['/auth/login'])
               }),
               catchError(error => {
                 console.log('Error de registro', error);
@@ -55,6 +55,22 @@ export class AuthService {
             )
 
 
+  }
+
+
+  logout() {
+    return this.http.post('http://localhost:3000/logout', {}, {withCredentials: true})
+    .pipe(
+      tap(() => {
+        localStorage.removeItem('id');
+        localStorage.removeItem('username');
+        this.router.navigate(['/auth/login']);
+      }),
+      catchError(error => {
+        console.log('Error al cerrar la sesión', error);
+        return throwError(() => new Error());
+      })
+    );
   }
 }
 

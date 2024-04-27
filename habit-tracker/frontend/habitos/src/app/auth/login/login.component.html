@@ -1,4 +1,5 @@
 <div class="login-container">
+  <img src="assets/logo_dp.jpg" alt="Logo DP" class="logo">
     <h2>Iniciar sesión</h2>
     <form (submit)="login(username.value, password.value, $event)">
       <div class="form-group">
@@ -10,7 +11,9 @@
         <input type="password" id="password" #password required>
       </div>
       <button type="submit">Iniciar sesión</button>
+      <button routerLink="/auth/registrar-usuario" routerLinkActive="active" class="register-btn">Regístrate</button>
+
     </form>
   </div>
 
-  <a routerLink="/auth/registrar-usuario" routerLinkActive="active">Regístrate</a>
+  

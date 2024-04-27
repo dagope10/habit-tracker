@@ -7,7 +7,6 @@ router.get('/', async (req, res)=>{
     try{
         const categorias = await Habito.obtenerCategorias();
         res.json(categorias);
-        console.log(categorias);
     } catch(error) {
         res.status(500).json(console.log(error));
     }
