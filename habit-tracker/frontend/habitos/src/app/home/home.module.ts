@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
   exports: [
     PagprincipalComponent,
     RouterModule,
-    HomeRoutingModule,
+    HomeRoutingModule
   ]
 })
 export class HomeModule { }

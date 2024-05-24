@@ -11,6 +11,8 @@ import { HabitosService } from '../../../../service/habitos.service';
 export class CrearHabitoComponent {
   form: FormGroup;
   categorias: any[] = [];
+  mensaje: string | null = null;
+  tipoMensaje: 'exito' | 'errorMensaje' | null = null;
 
   constructor(private fb: FormBuilder, private habitoService: HabitosService){
     this.form = this.fb.group({
@@ -33,10 +35,20 @@ export class CrearHabitoComponent {
       this.habitoService.crearHabito(this.form.value).subscribe({
         next: (res: any) => {
           console.log("Hábito creado con éxito", res);
+          this.mensaje = "Hábito creado con éxito";
+          this.tipoMensaje = 'exito';
 
         },
         error: () => console.log("No se ha podido crear el hábito")
       })
+    }
+    else {
+      this.mensaje = "Por favor, rellena todos los campos"
+      this.tipoMensaje = 'errorMensaje';
+      setTimeout(() => {
+        this.mensaje = null;
+
+      }, 3000)
     }
   }
 

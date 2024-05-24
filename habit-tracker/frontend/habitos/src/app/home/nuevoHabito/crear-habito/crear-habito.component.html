@@ -22,6 +22,10 @@
         </select>
     </div>
 
+    <div *ngIf="mensaje" [ngClass]="{'exito': tipoMensaje === 'exito', 'errorMensaje': tipoMensaje === 'errorMensaje'}" class="mensaje">
+        {{ mensaje }}
+      </div>
+
     <div class="button-group">
         <button type="button" class="btn btn-secondary" routerLink="/home">Atrás</button>
         <button type="submit" class="btn btn-primary">Crear nuevo hábito</button>

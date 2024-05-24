@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  mensajeError: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -25,10 +28,17 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error(error);
-        // Manejar el error de login adecuadamente
-        // Por ejemplo, mostrar un mensaje al usuario
+        this.mensajeError = 'Usuario o contraseña incorrectas';
+        setTimeout(() => {
+          this.mensajeError = null;
+
+        }, 3000);
+
+        
       }
     });
   }
+
+ 
 }
 

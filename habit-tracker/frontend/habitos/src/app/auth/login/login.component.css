@@ -92,3 +92,22 @@
   .login-container form button[class="register-btn"]:hover {
   background-color: #0066cc;
   }
+
+  .red-snackbar {
+    background-color: #f44336;  
+    color: #fff;
+  }
+
+  .mensajeError {
+    color: #fff;
+    background-color: #f44336; 
+    padding: 10px;
+    margin: 10px 0; 
+    border-radius: 5px; 
+    text-align: center; 
+    border: 1px solid #f44336; 
+  }
+
+  
+
+ 

@@ -42,6 +42,28 @@ h2 {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 30px;
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #6c757d; 
+    color: white;
+    cursor: pointer;
     transition: background-color 0.3s;
-  border-radius: 30px;
+    border-radius: 30px;
+    margin-top: 10px; 
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+    transform: scale(1.05); 
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: scale(1.05); 
 }
