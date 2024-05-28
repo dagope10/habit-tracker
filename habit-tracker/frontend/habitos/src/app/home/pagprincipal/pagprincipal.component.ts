@@ -16,6 +16,7 @@ export class PagprincipalComponent implements OnInit {
   categorias: any[] = [];
   categoriaSeleccionada: string = 'todos';
   habitosFiltrados: Habito[] = [];
+  fecha_vacia: Date = new Date(0);
 
   constructor(
     private http: HttpClient,
@@ -111,21 +112,21 @@ export class PagprincipalComponent implements OnInit {
 
     this.habitos.forEach((habito: Habito) => {
       if (!habito.ultimaVezRealizado) {
-        console.log('Fecha de último realizado no disponible para el hábito:', habito.nombre);
-        return; // Salta al siguiente hábito si no hay fecha de último realizado
+        return;
       }
       
       const ultimaVezRealizado = new Date(habito.ultimaVezRealizado);
-      if (ultimaVezRealizado.getTime() === anteayer.getTime()) {
-        console.log(
+      if (ultimaVezRealizado.getTime() === anteayer.getTime() && habito.ultimaVezRealizado != this.fecha_vacia) {
+        alert(
           'La última vez que registraste un hábito fue anteayer. Si no lo registras hoy, mañana perderás tu progreso'
         );
       }
       if (ultimaVezRealizado.getTime() <= haceDosDias.getTime()) {
-        console.log(`${habito.id_habito}, has perdido el progreso`);
+        alert(`Has perdido el progreso del hábito ${habito.nombre}`);
         habito.diasConsecutivos = 0;
         //Aquí iría la función para perder el progreso, como la 1medalla.
         habito.medalla = 'Sin medalla';
+        habito.ultimaVezRealizado = new Date(0);
       }
     });
   }

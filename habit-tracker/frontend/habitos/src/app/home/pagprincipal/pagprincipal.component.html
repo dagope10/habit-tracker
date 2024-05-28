@@ -32,7 +32,7 @@
                 <td>{{ habito.descripcion }}</td>
                 <td>{{ habito.diasTotales }}</td>
                 <td>{{ habito.diasConsecutivos }}</td>
-                <td></td>
+                <td>{{habito.medalla}}</td>
                 <td>
                     <button (click)="marcarComoRealizado(habito)" [disabled]="!habito.puedeSerRealizadoHoy">Marcar como Realizado</button>
                 </td>
