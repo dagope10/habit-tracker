@@ -95,3 +95,63 @@ button[disabled] {
     height: auto;
     z-index: 10;
 }
+
+/* Media Query para tablets */
+@media (max-width: 1024px) {
+    .login-container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .logo {
+        width: 50px; 
+    }
+
+    .greeting {
+        font-size: 18px; 
+    }
+
+    .habitos-table th, .habitos-table td {
+        padding: 6px; 
+    }
+
+    .button, .btn-primary, .logout-container button {
+        padding: 6px 12px; 
+    }
+}
+
+/* Media Query para móviles */
+@media (max-width: 600px) {
+    .login-container {
+        width: 100%;
+        height: auto; 
+        padding: 5px;
+    }
+
+    .logout-container {
+        position: relative; 
+        width: 100%; 
+        text-align: right;
+    }
+
+    .logo {
+        position: static; 
+        margin-bottom: 20px;
+    } 
+
+    .greeting {
+        font-size: 16px; 
+    }
+
+    .habitos-table, .habitos-table th, .habitos-table td {
+        width: 100%; 
+        font-size: 14px; 
+    }
+
+    .button, .btn-primary, .logout-container button {
+        width: 100%; 
+        padding: 10px; 
+    }
+    
+
+}

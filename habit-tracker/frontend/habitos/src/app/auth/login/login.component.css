@@ -108,6 +108,37 @@
     border: 1px solid #f44336; 
   }
 
-  
+  @media (max-width: 1024px) {
+    .login-container {
+        width: 90%; /* Ajustar el ancho del contenedor */
+    }
+
+    .form-group {
+        width: 100%; /* Ampliar el ancho de los grupos de formulario para llenar el contenedor */
+    }
+
+    button {
+        width: 90%; /* Ajustar el ancho de los botones para mantener la consistencia */
+    }
+}
+
+@media (max-width: 600px) {
+  .login-container {
+      width: 100%; /* Hacer que el contenedor ocupe todo el ancho disponible */
+      padding: 10px; /* Ajustar el padding para no perder espacio utilizable */
+  }
+
+  .form-group {
+      width: 100%; /* Asegurar que los form-group utilicen todo el ancho */
+  }
+
+  input, button {
+      width: 100%; /* Expandir input y button para mejorar la accesibilidad */
+  }
+
+  .logo {
+      display: none; /* Opcionalmente ocultar el logo si se desea más espacio */
+  }
+}
 
  
